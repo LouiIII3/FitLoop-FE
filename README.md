@@ -1,137 +1,136 @@
-# 👗 FITLOOP - Frontend
+# 👗 FITLOOP - 순환형 패션 커뮤니티 플랫폼
+
+<br />
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/b6bb06a6-a87c-4507-8a58-7600ed47b422" alt="FITLOOP Logo">
+  <img src="https://github.com/user-attachments/assets/f3189ecb-934e-4aa0-bdac-cdb00acacc49" width="900" alt="FITLOOP Banner"/>
 </p>
 
-**FITLOOP**은 사용자가 옷을 사고팔 수 있는 패션 거래 플랫폼입니다.  
-사용자는 마켓에서 옷을 사고팔 수 있으며, 룩북을 통해 스타일을 공유하고, 챌린지에 참여해 트렌디한 패션 문화를 즐길 수 있습니다.
+<br />
 
----
-<br>
+**FITLOOP**은 패션 아이템을 사고팔고, 룩북과 챌린지를 통해 스타일을 공유하는  
+**순환형 패션 커뮤니티 플랫폼**입니다.
 
-## 🛠️ 프로젝트 개요
-
-- **프로젝트명**: FITLOOP
-- **목적**: 사용자들이 패션 아이템을 사고팔고, 룩북과 챌린지를 통해 스타일을 공유하는 패션 커뮤니티 플랫폼 제공
-
-<br>
-
-### ✨ 주요 기능
-
-- **🛒 마켓플레이스**: 사용자가 직접 패션 아이템을 등록 및 판매
-- **📸 룩북**: 사진 업로드를 통한 스타일 공유
-- **🎥 챌린지**: 태그 + 영상 기반의 패션 챌린지 참여 기능
-- **⭐ 즐겨찾기(북마크)**: 관심 있는 상품 및 룩북을 저장하여 쉽게 다시 보기
-- **🔍 필터링**: 스타일, 브랜드, 가격대 등의 조건으로 검색 가능
-
----
-<br>
-
-## 💻 개발 환경
-
-<table>
-  <thead>
-    <tr>
-      <th>카테고리</th>
-      <th>라이브러리</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td rowspan="2"><strong>프레임워크</strong></td>
-      <td>Next.js (v15.1.4)</td>
-      <td>React 기반 SSR/CSR 웹 프레임워크</td>
-    </tr>
-    <tr>
-      <td>React (v19.0.0)</td>
-      <td>선언형 UI 라이브러리</td>
-    </tr>
-    <tr>
-      <td rowspan="3"><strong>UI</strong></td>
-      <td>Tailwind CSS</td>
-      <td>유틸리티 기반 CSS 프레임워크</td>
-    </tr>
-    <tr>
-      <td>Ant Design (v5.22.7)</td>
-      <td>고성능 UI 컴포넌트 라이브러리</td>
-    </tr>
-    <tr>
-      <td>@ant-design/icons (v5.5.2)</td>
-      <td>Ant Design 공식 아이콘 패키지</td>
-    </tr>
-    <tr>
-      <td><strong>데이터 처리</strong></td>
-      <td>@tanstack/react-query (v5.66.0)</td>
-      <td>서버 상태 및 비동기 처리 라이브러리</td>
-    </tr>
-    <tr>
-      <td rowspan="3"><strong>기타</strong></td>
-      <td>Axios (v1.7.9)</td>
-      <td>HTTP 통신 클라이언트</td>
-    </tr>
-    <tr>
-      <td>Lottie-react (v2.4.0)</td>
-      <td>애니메이션 효과용 라이브러리</td>
-    </tr>
-    <tr>
-      <td>react-cookie (v7.2.2)</td>
-      <td>쿠키 기반 로그인 상태 관리</td>
-    </tr>
-  </tbody>
-</table>
-
-
+지속 가능한 패션을 위해 **REUSE · ECO · COMMUNITY · STYLE** 가치를 기반으로 설계했습니다.
 
 ---
 
-<br>
-
-## 🚀 설계 방향
-
-FITLOOP은 **사용자 경험**과 **보안 안정성**을 동시에 고려하여 설계되었습니다.
-
-### 🔐 인증 및 권한 관리
-
-- **JWT 기반 인증 시스템**
-  - 로그인 시 **액세스 토큰**과 **리프레시 토큰**을 발급하여, 각각 헤더와 HttpOnly 쿠키에 저장
-  - 리프레시 토큰을 DB에 저장하고 유효성을 추가 검증하여 보안 강화
-  - 요청마다 JWT의 유효성 및 권한을 확인하여 미인증 요청 사전 차단
-
-- **역할(Role) 기반 접근 제어**
-  - 사용자의 권한(MEMBER, ADMIN 등)에 따라 접근 가능한 API 엔드포인트를 명확히 구분하여 설정
-  - 로그인 응답 시 사용자 권한과 개인정보 입력 여부를 함께 전달하여 프론트엔드에서의 접근 관리 지원
-
-- **안전한 로그아웃 처리**
-  - 로그아웃 시 DB에서 리프레시 토큰을 즉각 삭제하고, 쿠키 만료 처리로 보안성 유지
-
-### 🚨 예외 처리
-
-- **커스텀 에러 코드 사용**
-  - 에러 유형을 명확히 정의하고, 일관된 JSON 형식으로 응답하여 프론트엔드의 오류 처리 용이성 향상
+## 주요 기능 (사용자 흐름 기준)
 
 
-### 🧩 미들웨어 설계
+### 1) 메인 홈 (탐색 시작)
 
-Next.js의 `middleware` 기능을 활용해 인증이 필요한 페이지를 보호하고 있습니다.
+<img src="https://github.com/user-attachments/assets/4a75a072-6719-4211-a12b-c43d02a88075" width="260" alt="메인"/>
 
-- **JWT 토큰 기반 인증 처리**  
-  - 요청 시 쿠키에서 토큰을 추출하여 유무 확인
-  - 토큰이 없고 보호된 경로에 접근할 경우, **로그인 페이지(`/login`)로 리다이렉트**
-
-- **공통 처리 흐름**  
-  - 인증이 필요 없는 경로는 그대로 통과
-  - 인증이 필요한 경로는 토큰 유무로 접근 제어 수행
-
-- **예외 처리 방향**  
-  - 토큰이 만료되었거나 탈취/누락된 경우를 고려해 사용자 경험을 해치지 않도록 예외 상황 대응
-  - 이후 리프레시 토큰 또는 자동 로그아웃 로직 추가 예정
+- 시즌 배너/이벤트 노출
+- 최근 등록/인기/카테고리 탐색 진입점 제공
+- 빠른 탐색 중심 UI 구성
 
 ---
+
+### 2) 상품 탐색 (최근 등록 · 인기 · 카테고리)
+
+| 최근 등록된 상품 | 인기 상품 | 카테고리별 |
+|---|---|---|
+| <img src="https://github.com/user-attachments/assets/7ad08c3b-34de-4a1c-b2a3-cd7b89388c4c" width="220" alt="최근 등록된 상품"/> | <img src="https://github.com/user-attachments/assets/deefbe8e-3177-484a-ab9b-6ebf578dd520" width="220" alt="인기 상품"/> | <img src="https://github.com/user-attachments/assets/6ef6912d-4a68-4962-bd92-a056bc7ae293" width="220" alt="카테고리별"/> |
+
+- **최근 등록**: 최신 상품을 빠르게 확인할 수 있는 브라우징 흐름 제공  
+- **인기 상품**: 좋아요/반응 기반 랭킹 노출로 트렌드 탐색 지원  
+- **카테고리별**: 대분류/소분류 + 성별 탭 기반 탐색 UX 제공  
+
+---
+
+### 3) 상품 정보 (상품 상세 · 마이샵)
+
+| 상품 상세 | 마이샵 |
+|---|---|
+| <img src="https://github.com/user-attachments/assets/dd066a3f-6954-46f4-a2e2-4eee85dba5c1" width="240" alt="상품 보기"/> | <img src="https://github.com/user-attachments/assets/c22e0efd-fa47-443f-a50a-9a1a85f5c241" width="240" alt="마이샵"/> |
+
+- **상품 상세**: 이미지/태그/카테고리/설명 및 좋아요(찜) 제공  
+- **마이샵**: 판매 중/판매 완료 관리, 프로필/평점/취향 태그 노출  
+
+---
+
+### 4) 장바구니 (구매 준비)
+
+<img src="https://github.com/user-attachments/assets/9a051969-1392-44eb-9420-319d512a4893" width="260" alt="장바구니"/>
+
+- 전체/개별 선택
+- 판매자별 금액 분리 및 합산
+- 결제 예상 금액 실시간 표시
+
+---
+
+### 5) 쿠폰 (혜택 적용)
+
+| 쿠폰 등록 | 쿠폰 확인 |
+|---|---|
+| <img src="https://github.com/user-attachments/assets/61e33dca-c638-4ca1-bc0c-a9a431645d98" width="240" alt="쿠폰 등록"/> | <img src="https://github.com/user-attachments/assets/e94a1426-cca2-4c66-8ff1-286489e3354d" width="240" alt="쿠폰 확인"/> |
+
+- 쿠폰 등록/조회 UI
+- 사용 조건/적용 가능 여부 확인
+- 결제 경험에서 혜택 요소 제공
+
+---
+
+### 6) FITPAY 충전 & 결제 (결제 플로우)
+
+| FITPAY 구매화면 | QR 결제 |
+|---|---|
+| <img src="https://github.com/user-attachments/assets/027a746b-b0c0-4153-ae45-32e89eb57e38" width="240" alt="FITPAY 구매화면"/> | <img src="https://github.com/user-attachments/assets/65ed784b-02fd-4a41-a223-897c49312121" width="240" alt="QR결제"/> |
+
+- FitPay 잔액 확인 및 충전 금액 선택
+- 카카오페이 QR 결제 연동
+- QR 스캔 → 결제 화면 이동
+
+---
+
+### 7) 관리자 페이지 (운영/관리)
+
+<img src="https://github.com/user-attachments/assets/0a6c413e-5477-423c-964b-373fdfa43558" width="900" alt="관리자 페이지"/>
+
+- 사용자 상태 관리 (ACTIVE / SUSPENDED)
+- 누적 주문/결제 정보 확인
+- CSV 내보내기
+- ADMIN/MEMBER 권한 기반 접근 제어
+
+---
+
+## Tech Stack (어필 포인트)
+
+### Frontend
+- **Next.js 15** / **React 19** / **TypeScript**
+- **Tailwind CSS** + **Ant Design** 기반 UI 구성
+- **TanStack Query**로 서버 상태 관리 및 캐싱/리패칭 최적화
+- **Axios** 기반 API 통신 레이어 분리
+- **Zustand**로 전역 상태(예: 좋아요/유저 상태 등) 관리
+- **Recharts**로 데이터 시각화 구성
+- **react-cookie**로 쿠키 기반 인증 처리
+- **lottie-react**로 인터랙션/모션 UX 강화
+
+---
+
+### Backend
+- **Spring Boot** 기반 REST API
+- **MySQL** + **JPA/Hibernate** 기반 데이터 모델링 및 영속성 관리
+- **Spring Security + JWT** 인증/인가 구조
+- **Google OAuth2 로그인** 연동
+- **AWS S3** 이미지 업로드/조회 처리
+- **Redis** 기반 캐싱/상태 데이터 처리 (예: 좋아요/실시간 카운트 확장)
+- **Kafka** 기반 이벤트 처리 구조(Producer/Consumer, JsonSerializer/Deserializer)
+- **Spring Batch**
+  - **Redis에 누적된 좋아요 수(실시간 카운트)를 일정 주기로 DB에 일괄 반영**하기 위한 배치 처리로 활용
+- **아임포트(Iamport) 결제 연동** 기반 외부 결제 API 연계
+
+> ⚠️ 보안: API Key/Secret, DB 비밀번호, JWT Secret 등 민감정보는  
+> `.env` 또는 `application-secret.yml`로 분리하고 Git에 포함하지 않습니다.
+
+---
+
 
 ## 코드 컨벤션
 
-### ✅ ESLint 설정 (Flat Config)
+### ESLint 설정 (Flat Config)
 
 ```js
 rules: {
@@ -143,104 +142,31 @@ rules: {
   "prefer-template": "error",               // 템플릿 리터럴 사용 권장
   "space-infix-ops": "error"                // 연산자 사이 공백 필수
 }
-
 ```
-<br>
-<br>
-<br>
 
-## 🗓️ FITLOOP 프로젝트 개발 히스토리
+---
 
-본 프로젝트는 애자일 방법론 중 하나인 스크럼(Scrum)을 적용하여 짧은 주기로 기능을 개발하고,<br> 지속적인 논의와 피드백을 통해 점진적으로 완성도를 높이는 방식으로 진행하였습니다.
+## 📅 개발 히스토리
+
+### 2024.04 ~ 06
+- 서비스 구조 확정 및 도메인 분리(유저/상품/결제/운영)
+- 인증/인가(JWT + Security) 설계
+- 관리자 페이지 초기 구현
+- UI 컴포넌트 시스템 정리
+
+### 2024.07 ~ 09
+- S3 이미지 업로드 연동
+- 장바구니/좋아요/카테고리 기능 고도화
+- FitPay 결제 UX 완성 및 외부 결제 연동 확장
+- **Redis + Batch 기반 좋아요 수 DB 일괄 반영 구조 적용**
+- Kafka 이벤트 처리 구조 적용
+- UI/UX 리팩토링 및 안정화
+
+---
 
 
-<details>
-  <summary>📅 2024년 12월 개발 히스토리 보기</summary>
 
-| 날짜 | 작업 내용 |
-|------|-----------|
-| 12.20 | 프로젝트 구조 설계 시작, 기능 구상 |
-| 12.21 | 프로젝트 기능 기획 |
-| 12.23 | 프로젝트 상세 기능 기획 |
-| 12.24 | 프로젝트명 확정(FitLoop), 컨벤션 논의 |
-| 12.26 | ERD 논의 시작 |
-| 12.27 | 로고 제작, 테이블 구성 논의 |
-| 12.28 | 이미지 정책, 구독 서비스, Enum 논의 |
-| 12.29 | 상태 이력 테이블 필요성 검토 |
-| 12.30 | ERD 구현 및 관계 설정, 배송지 테이블 추가 |
-| 12.31 | 구독형 서비스 논의 |
+## 🌱 마무리
 
-</details>
-
-<details>
-  <summary>📅 2024년 1월 개발 히스토리 보기</summary>
-
-| 날짜 | 작업 내용 |
-|------|-----------|
-| 01.02 | 개발 일정 수립, JWT/SSR/Middleware 정리 |
-| 01.03 | Gradle 설정, 예외 처리 설계 |
-| 01.04 | 로고 및 GitHub 라벨 확정 |
-| 01.05 | 이슈/PR 템플릿 작성, AWS 및 쿠버네티스 학습 |
-| 01.06 | Ant Design 학습, 피그마 초안 |
-| 01.07 | 인증/인가 구조, HttpOnly 쿠키 정리 |
-| 01.08 | JWT와 SSR/CSR 개념 비교 |
-| 01.09 | ESLint 대응, 이미지 최적화 논의 |
-| 01.10 | 리프레시 토큰 구조, 삭제 처리 논의 |
-| 01.11 | JWT 로그인 로직 구성, 토큰 저장 전략 수립, 캐시(redis) 대해 논의 |
-| 01.12 | 회원 상태(status), @Transactional 처리 논의 |
-| 01.13 | 테이블 통합 vs 분리 → 분리 설계 선택 |
-| 01.14 | JWT 기반 코드 구현 시작 |
-| 01.15 | Axios 도입, JSON 전송 방식 결정 |
-| 01.16 | API 명세서 및 버튼 UI 기획 |
-| 01.17 | 계정 정보 페이지 개발 |
-| 01.19 | 시스템 기능 구현 내용 정리 |
-| 01.20 | 공통 에러 코드 및 전역 예외 처리 구성 |
-| 01.21 | 사용자 정의 예외 클래스 정리 |
-| 01.22 | Spring Security 필터 설정 논의 |
-| 01.23 | CORS 설정 및 토큰 로직 정리 |
-| 01.24 | RefreshToken 로직 개발 시작 |
-| 01.25 | 프론트 상태 관리, 진행률 UI 구성 |
-| 01.26 | 회원가입 유효성 검사 추가 |
-| 01.27 | 사용자 정의 에러 반환 방식 정리 |
-
-</details>
-
-<details>
-  <summary>📅 2024년 2월 개발 히스토리 보기</summary>
-
-| 날짜 | 작업 내용 |
-|------|-----------|
-| 02.14 | Enum/Boolean 필드 설계, 생일 예외 처리 개선 |
-| 02.21 | 로그인 후 개인정보 입력 여부 분기 설계 |
-| 02.23 | JWT 필터 permitAll 이슈 해결 방식 논의 |
-| 02.24 | 마이페이지 설계, 로그아웃 필터 개발 |
-| 02.25 | 로그아웃 필터 완성, 마이페이지 UI 구성 |
-| 02.26 | 상품 도메인 기획 및 등록/목록 페이지 분배 |
-| 02.28 | 공통 색상 시스템 구축, 광고 이미지 연동 설계 |
-
-</details>
-
-<details>
-  <summary>📅 2024년 3월 개발 히스토리 보기</summary>
-
-| 날짜 | 작업 내용 |
-|------|-----------|
-| 03.03 | Tailwind 및 스크롤바 스타일 개선 |
-| 03.04 | 카테고리 UI 및 페이지 이동 로직 구현, AWS 진행 |
-| 03.08 | 상품 등록 시 카테고리 선택 UI 논의 |
-| 03.11 | UserDetails ID 이슈 해결, 개인정보 입력 UI 보완 |
-| 03.12 | S3 광고 이미지 연동 컨트롤러 설계, 마이페이지 구성 |
-| 03.13 | URL 명칭 통일, 회원가입 UX 개선, 사용자 통계 테이블 설계 |
-| 03.14 | 상품 등록 URL 구조 논의, 상품 상세 페이지 수정·삭제 버튼 추가, 사용자 및 상품 테이블 설계 논의 |
-| 03.15 | 스크롤 구현 방식 공유, 카테고리 ENUM 적용 논의 |
-| 03.18 | 버튼 색상 스타일 정의, 카테고리 선택 시 데이터 통신 방식 논의 |
-| 03.19 | 기능 리뷰 및 피드백 공유, 상품 저장 로직 논의 |
-| 03.22 | 이미지 배열(`images`)과 파일 배열(`imageFiles`) 차이점 정리, axios 인스턴스 처리 방식 및 Figma 연동 방식 논의 |
-| 03.24 | Next.js 미들웨어 공식문서 기반 인증 흐름 논의, DB 정규화 이슈 점검 |
-| 03.25 | `personalInfo` undefined 문제 해결, JWT 저장 위치 재논의, 이미지 전송 방식(JSON vs FormData) 논의 |
-| 03.26 | AWS S3 이미지 업로드 및 조회 구현 |
-| 03.27 | Redis 기반 캐싱 구조 설계, 팀 내 역할 분배 |
-| 03.28 | 상품 등록 완료 후 리다이렉트 처리, 불필요한 `Content-Type` 제거, 이미지 중복 처리 이슈 해결 |
-| 03.29 | Kafka, Redis, WebSocket, RabbitMQ, Spring Batch 관련 아키텍처 비교 및 적용 가능성 논의 |
-
-</details>
+FITLOOP은 단순 중고 거래를 넘어,  
+**패션 콘텐츠와 커뮤니티를 연결하고 재사용을 촉진하는 순환형 플랫폼**을 목표로 개발했습니다.
