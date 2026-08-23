@@ -1,5 +1,3 @@
-import { instance } from '@/config/apiConfig';
-
 export interface AccountPayload {
   bankName: string;
   accountNumber: string;
@@ -8,5 +6,5 @@ export interface AccountPayload {
 
 
 export async function saveAccountSetting(payload: AccountPayload): Promise<void> {
-  await instance.post("/profile/account", payload);
+  localStorage.setItem("fitloop_mock_account", JSON.stringify(payload));
 }

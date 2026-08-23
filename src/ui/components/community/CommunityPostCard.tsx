@@ -12,7 +12,7 @@ export default function CommunityPostCard({ post }: { post: any }) {
     <Card
       size="small"
       className="rounded-xl"
-      bodyStyle={{ padding: "12px 12px" }}
+      styles={{ body: { padding: "12px 12px" } }}
     >
       <div className="flex gap-3">
         {/* 프로필 썸네일 */}

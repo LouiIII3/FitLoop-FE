@@ -5,7 +5,6 @@ import { Button, Typography, message, Spin } from "antd";
 import { WalletOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import { fetchWalletBalance } from "@/services/api/walletApi";
-import { instance } from "@/config/apiConfig";
 import BackButton from "@/ui/components/common/BackButton";
 
 const { Title, Text } = Typography;
@@ -32,11 +31,6 @@ interface IamportResponse {
 }
 
 const chargeOptions = [5000, 10000, 30000, 50000];
-
-const getAccessTokenFromCookie = (): string | null => {
-  const match = document.cookie.match(/(?:^|; )access=([^;]*)/);
-  return match ? match[1] : null;
-};
 
 const ChargePage: React.FC = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
@@ -97,33 +91,17 @@ const ChargePage: React.FC = () => {
     IMP.request_pay(payload, async (rsp: IamportResponse) => {
       if (rsp.success) {
         try {
-          const accessToken = getAccessTokenFromCookie();
-          if (!accessToken) {
-            message.error("로그인이 필요합니다.");
-            return;
-          }
-
-          const res = await instance.post(
-            "/wallets/charge/verify",
-            null,
-            {
-              params: { impUid: rsp.imp_uid },
-              headers: { access: accessToken },
-            }
-          );
-
-          const newBalance: number = res.data.balance;
+          const newBalance = (walletBalance ?? 0) + selectedAmount;
+          localStorage.setItem("fitloop_mock_wallet", String(newBalance));
           setWalletBalance(newBalance);
 
           const paidAmount: number =
-            typeof res.data.paidAmount === "number"
-              ? res.data.paidAmount
-              : Number(rsp.paid_amount || selectedAmount);
+            Number(rsp.paid_amount || selectedAmount);
 
           message.success(`${paidAmount.toLocaleString()}원 충전 완료!`);
         } catch (err) {
           console.error("충전 실패:", err);
-          message.error("서버와 통신 중 오류가 발생했습니다.");
+          message.error("충전 정보를 저장하는 중 오류가 발생했습니다.");
         }
       } else {
         message.error(`결제 실패: ${rsp.error_msg || "알 수 없는 오류"}`);

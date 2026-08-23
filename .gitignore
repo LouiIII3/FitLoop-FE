@@ -8,6 +8,8 @@ node_modules/
 .next/
 out/
 build/
+*.tsbuildinfo
+public/assets/generated/
 
 # 환경 파일
 .env
@@ -23,3 +25,4 @@ Thumbs.db
 # 패키지
 package.json
 package-lock.json
+.vercel

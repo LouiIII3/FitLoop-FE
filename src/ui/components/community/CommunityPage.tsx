@@ -28,21 +28,21 @@ const dummyMagazine = [
     title: "버려진 옷으로\n쉽게 가방 만들기",
     likes: 109,
     comments: 8,
-    thumbnail: null,
+    thumbnail: "/assets/products/mock/product-05.png",
   },
   {
     id: 2,
     title: "최근 유행이 지난\n패션을 재미있게 입기",
     likes: 145,
     comments: 9,
-    thumbnail: null,
+    thumbnail: "/assets/products/mock/product-03.png",
   },
   {
     id: 3,
     title: "요즘 남자 코디\n레퍼런스 모음",
     likes: 88,
     comments: 2,
-    thumbnail: null,
+    thumbnail: "/assets/products/mock/product-06.png",
   },
 ];
 

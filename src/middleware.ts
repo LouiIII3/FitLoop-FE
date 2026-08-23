@@ -37,6 +37,7 @@ function decodeJwtPayload(token: string): JwtPayload | null {
 }
 
 export function middleware(req: NextRequest) {
+  if (process.env.NEXT_PUBLIC_USE_MOCK !== "false") return NextResponse.next();
   const accessToken = req.cookies.get("access")?.value;
   const refreshToken = req.cookies.get("refresh")?.value;
   const { pathname } = req.nextUrl;

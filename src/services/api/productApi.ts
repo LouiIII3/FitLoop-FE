@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { instance } from "@/config/apiConfig";
+import { addProduct, findProduct, getProducts, mockDelay } from "@/data/mockStore";
 
 export interface ProductResponse {
   id: number;
@@ -29,10 +29,8 @@ export const fetchRecentProducts = async (
   page: number,
   size = 9
 ): Promise<ProductResponse[]> => {
-  const response = await instance.get(`/products/recent`, {
-    params: { page, size },
-  });
-  return response.data;
+  await mockDelay();
+  return getProducts().slice(page * size, (page + 1) * size);
 };
 
 // 인기 상품 조회
@@ -40,10 +38,8 @@ export const fetchPopularProducts = async (
   page: number,
   size = 9
 ): Promise<ProductResponse[]> => {
-  const response = await instance.get(`/products/popular`, {
-    params: { page, size },
-  });
-  return response.data;
+  await mockDelay();
+  return getProducts().sort((a, b) => b.likeCount - a.likeCount).slice(page * size, (page + 1) * size);
 };
 
 // 카테고리 상품 조회
@@ -53,22 +49,22 @@ export const fetchCategoryProducts = async (
   gender: string,
   size = 9
 ): Promise<ProductResponse[]> => {
-  const response = await instance.get(`/products/category`, {
-    params: { page, size, categoryCode, gender },
-  });
-  return response.data;
+  await mockDelay();
+  void categoryCode;
+  void gender;
+  return getProducts().slice(page * size, (page + 1) * size);
 };
 
 // 상품 등록
 export const registerProduct = async (productData: any) => {
-  const response = await instance.post("/products/register", productData);
-  return response.data;
+  await mockDelay();
+  return addProduct(productData);
 };
 
 // 상품 상세 조회
 export const fetchProductDetail = async (
   id: string | number
 ): Promise<ProductDetail> => {
-  const response = await instance.get(`/products/${id}`);
-  return response.data;
+  await mockDelay();
+  return findProduct(id);
 };

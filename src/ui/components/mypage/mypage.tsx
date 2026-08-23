@@ -114,8 +114,13 @@ const MyPage: React.FC = () => {
     };
   }, [recentViewed]);
 
-  const s3BaseUrl = process.env.NEXT_PUBLIC_S3_BASE_URL ?? "";
-  const banners = Array.from({ length: 5 }, (_, i) => `${s3BaseUrl}advertisement_${i + 1}.png`);
+  const banners = [
+    "/assets/banners/banner_welcome_coupon.png",
+    "/assets/banners/banner_winter_sale.png",
+    "/assets/banners/banner_outer_category.png",
+    "/assets/banners/banner_weekly_challenge.png",
+    "/assets/banners/banner_notice.png",
+  ];
 
   return (
     <div
@@ -290,10 +295,9 @@ const MyPage: React.FC = () => {
         <Title level={5} className="mb-2 text-[var(--text-black)]">(주) 핏루프 사업자 정보</Title>
         <List size="small">
           {[
-            { label: "대표이사", value: "곽지은" },
-            { label: "주소", value: "경기도 성남시 분당구 판교역로" },
-            { label: "문의 전화", value: "02-1234-5678" },
-            { label: "이메일", value: "fitloop@gmail.com" },
+            { label: "대표이사", value: "이성희" },
+            { label: "주소", value: "마포구 월드컵북로 481" },
+            { label: "이메일", value: "jikdyoutu@gmail.com" },
           ].map(({ label, value }) => (
             <List.Item key={label} className="flex min-w-0">
               <Text className="text-[var(--text-gray)]">{label}</Text>

@@ -1,6 +1,3 @@
-import axios from 'axios';
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-
 type CreateCouponTemplateReq = {
   name: string;
   code: string;
@@ -19,15 +16,13 @@ type CreateCouponTemplateReq = {
 };
 
 export async function createCouponTemplate(body: CreateCouponTemplateReq) {
-  const res = await axios.post(`${API_BASE_URL}/api/v1/admin/coupons/templates`, body, {
-    withCredentials: true,
-  });
-  return res.data;
+  const templates = JSON.parse(localStorage.getItem("fitloop_mock_coupon_templates") ?? "[]");
+  localStorage.setItem("fitloop_mock_coupon_templates", JSON.stringify([{ id: Date.now(), ...body }, ...templates]));
+  return { success: true };
 }
 
 export async function issueCouponToUser(body: { templateCode: string; userId: number }) {
-  const res = await axios.post(`${API_BASE_URL}/api/v1/admin/coupons/templates/issue`, body, {
-    withCredentials: true,
-  });
-  return res.data;
+  const issues = JSON.parse(localStorage.getItem("fitloop_mock_coupon_issues") ?? "[]");
+  localStorage.setItem("fitloop_mock_coupon_issues", JSON.stringify([body, ...issues]));
+  return { success: true };
 }

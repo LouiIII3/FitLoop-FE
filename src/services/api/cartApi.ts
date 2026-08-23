@@ -1,27 +1,28 @@
 /* eslint-disable */
-import { instance } from '@/config/apiConfig';
+import { addCartId, clearCartIds, findProduct, getCartIds, mockDelay, removeCartId } from '@/data/mockStore';
 
 export const fetchCartItems = async () => {
-  const response = await instance.get('/cart');
-  return response.data;
+  await mockDelay();
+  return getCartIds().map((id, index) => {
+    const product = findProduct(id);
+    return { cartId: index + 1, productId: id, productName: product.name, price: product.price,
+      category: product.category, sellerNickname: product.sellerName, sellerId: index % 2 + 1,
+      imageUrls: product.imageUrls };
+  });
 };
 
 export const addToCart = async (productId: number): Promise<any> => {
-    const response = await instance.post(`/cart/add`, null, {
-      params: { productId },
-    });
-    return response.data;
+    addCartId(productId);
+    return { success: true };
   };
   
   export const removeFromCart = async (productId: number): Promise<any> => {
-    const response = await instance.delete(`/cart/remove`, {
-      params: { productId },
-    });
-    return response.data;
+    removeCartId(productId);
+    return { success: true };
   };
   
 
 export const clearCart = async () => {
-  const response = await instance.delete('/cart/clear');
-  return response.data;
+  clearCartIds();
+  return { success: true };
 };

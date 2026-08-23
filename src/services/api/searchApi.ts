@@ -1,8 +1,10 @@
 import { ProductResponse } from "./productApi";
+import { getProducts, mockDelay } from "@/data/mockStore";
 
 export async function fetchSearchResults(keyword: string): Promise<ProductResponse[]> {
-  const res = await fetch(`http://localhost:8080/api/v1/search?query=${encodeURIComponent(keyword)}`);
-  if (!res.ok) throw new Error('검색 실패');
-  const data = await res.json();
-  return data.products;
+  await mockDelay();
+  const query = keyword.trim().toLowerCase();
+  return getProducts().filter((product) =>
+    [product.name, product.category, ...product.tags].some((value) => value.toLowerCase().includes(query))
+  ) as ProductResponse[];
 }

@@ -1,7 +1,7 @@
 import { ProductResponse } from "./productApi";
-import { instance } from "@/config/apiConfig";
+import { getProducts, mockDelay } from "@/data/mockStore";
 
 export const fetchRecentViewedProducts = async (): Promise<ProductResponse[]> => {
-  const response = await instance.get<ProductResponse[]>("/products/recent-viewed");
-  return response.data;
+  await mockDelay();
+  return getProducts().slice(0, 6) as ProductResponse[];
 };
